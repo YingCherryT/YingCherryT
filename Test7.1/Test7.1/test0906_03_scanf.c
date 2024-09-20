@@ -1,14 +1,14 @@
-//#define _CRT_SECURE_NO_WARNINGS 1
-//#include <stdio.h>;
-//
-//
-//int main() {
-//	int year = 0;
-//	int month = 0;
-//	int day = 0;
-//	printf("ÇëÊäÈëÄêÔÂÈÕ");
-//	scanf("%d %*c %d %*c %d*", &year, &month, &day); //¸³ÖµºöÂÔ·û
-//	printf("%d%d%d", year, month, day);
-//
-//	return 0;
-//}
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>;
+
+
+int main() {
+	int year = 0;
+	int month = 0;
+	int day = 0;
+	printf("è¯·è¾“å…¥å¹´æœˆæ—¥");
+	scanf("%d %*c %d %*c %d*", &year, &month, &day); //èµ‹å€¼å¿½ç•¥ç¬¦
+	printf("%d%d%d", year, month, day);
+
+	return 0;
+}
