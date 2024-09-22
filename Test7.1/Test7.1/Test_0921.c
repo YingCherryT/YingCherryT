@@ -1,5 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS 1
-#include <stdio.h>;
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include <stdio.h>;
 
 //整形的存储
 
@@ -126,6 +126,7 @@
 //	printf("*pFloat的值为：%f\n", *pFloat);
 //	return 0;
 //}
+
 
 //(-1)^S * M * 2^E
 //(-1) ^ s表示符号位，当s = 0，V为正数；当s = 1，V为负数。
