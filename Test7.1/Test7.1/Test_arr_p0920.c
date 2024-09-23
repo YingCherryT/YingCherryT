@@ -381,5 +381,7 @@
 //
 //int (*parr[5])();//函数指针数组
 
-//用途转移表--转到Test_TransitionTable.c文件
+//用途转移表--转到Test_TransitionTable.c文件  (内含冒泡排序)
+
+//
 
