@@ -1,5 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>;
+#include<string.h>
+#include<errno.h>
+#include <stdlib.h>
 
 //1.编写一个程序，提示用户输入一个整数，判断该整数是正数、负
 //数还是零，并输出相应的结果。使用 if...else if...else 语句。
@@ -363,7 +366,114 @@ int chu(int x, int y) {
 //户输入这5个整数。
 //– 计算并输出这些整数的平均值，然后释放分配的内存。
 
+int* GetMemory(int num) {
+	int* p = malloc(num * sizeof(int));
+	if (p == NULL) {
+		printf("内存分配失败: %s\n", strerror(errno));
+	}
+		return p;
+}
+void Test() {
+	int num = 5;
+	int* str = GetMemory(num);
+	if (str==NULL)
+	{
+		return;
+	}
+		printf("请输入5个整数\n");
+		scanf("%d %d %d %d %d", str);
+		printf("你输入的整数是: ");
+		int i = 0;
+		for (i = 0; i < num; i++)
+		{
+			printf("%d ", *(str + i));
+		}
+		printf("\n"); // 添加换行符
+		free(str);
+		str = NULL;
+	
+}
+
+int main() {
+	//Test();
+	int num = 5;
+	int* p = (int*)malloc(num * sizeof(int));
+	if (p==NULL)
+	{
+		printf("内存分配失败: %s\n", strerror(errno));
+		return 1;
+	}
+
+	printf("请输入5个整数: ");
+	for (int i = 0; i < num; i++) {
+		scanf("%d", &p[i]); 
+	}
+	printf("输入的值为: ");
+	for (int i = 0; i < num; i++) {
+		printf("%d ", p[i]);
+	}
+	int sum = 0;
+	for (int i = 0; i < num; i++) {
+		sum += p[i];
+	}
+	double average = sum / (double)num; 
+
+	printf("这5个整数的平均值是: %.2f\n", average);
+
+	
+	return 0;
+}
+
 //编写一个程序，使用指针和动态内存分配创建一个 struct 数组，
 //存储3个学生的信息（姓名、年龄、GPA）。
 //– 然后通过指针访问和修改其中一个学生的GPA，并输出修改后的信
 //息。最后释放分配的内存。
+
+typedef struct stu
+{
+	char name[20];
+	int age;
+	float gpa;
+}Su;
+
+void modifyGPA(Su* student, float newGPA) {
+    student->gpa = newGPA;
+}
+
+int main() {
+    Su* students = (Su*)malloc(3 * sizeof(Su));
+
+    if (students == NULL) {
+        printf("内存分配失败。\n");
+        return 1;
+    }
+
+    strcpy(students[0].name, "zhangsan");
+    students[0].age = 22;
+    students[0].gpa = 2.2f;
+
+    strcpy(students[1].name, "lisi");
+    students[1].age = 24;
+    students[1].gpa = 3.4f;
+
+    strcpy(students[2].name, "wangwu");
+    students[2].age = 26;
+    students[2].gpa = 3.2f;
+
+    printf("学生信息:\n");
+    for (int i = 0; i < 3; i++) {
+        printf("姓名: %s, 年龄: %d, GPA: %.2f\n", students[i].name, students[i].age, students[i].gpa);
+    }
+
+    modifyGPA(&students[1], 3.8f); 
+
+    printf("\n修改后的学生信息:\n");
+    for (int i = 0; i < 3; i++) {
+        printf("姓名: %s, 年龄: %d, GPA: %.2f\n", students[i].name, students[i].age, students[i].gpa);
+    }
+
+    free(students);
+    students = NULL; 
+
+    return 0;
+}
